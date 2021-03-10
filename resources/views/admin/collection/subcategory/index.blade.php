@@ -38,6 +38,12 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
+                                    <label for="">Custom URL (Slug)</label>
+                                    <input type="text" class="form-control" placeholder="Enter url" name="url">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
                                     <label for="">Description</label>
                                     <textarea name="description" rows="4" class="form-control" placeholder="Enter Description"></textarea>
                                 </div>
@@ -117,7 +123,7 @@
                                         <td>{{$subcategory->name}}</td>
                                         <td>{{$subcategory->category->name}}</td>
                                         <td>
-                                            <img src="{{asset('uploads/subcategory/images/'.$subcategory->image)}}" alt="" class="img-fluid" width="50px">
+                                            <img src="{{asset('uploads/subcategory/images/'.$subcategory->image)}}" alt="" height="50px">
                                         </td>
                                         <td>
                                             <input type="checkbox" class="checkbox" {{$subcategory->status == '1' ? 'checked': ''}}>

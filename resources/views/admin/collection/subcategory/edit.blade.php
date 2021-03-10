@@ -51,14 +51,26 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label for="">Custom URL (Slug)</label>
+                                        <input type="text" class="form-control" placeholder="Enter url" name="url" value="{{$subcategory->url}}">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
                                         <label for="">Description</label>
                                         <textarea name="description" rows="4" class="form-control" placeholder="Enter Description">{{$subcategory->description}}</textarea>
                                     </div>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-5">
                                     <div class="form-group">
                                         <label for="">Image</label>
                                         <input type="file" class="form-control" name="image">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <div class="mb-2">Current Image</div>
                                         <img src="{{asset('uploads/subcategory/images/'.$subcategory->image)}}" alt="" width="50px">
                                     </div>
                                 </div>

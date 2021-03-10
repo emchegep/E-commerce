@@ -34,8 +34,8 @@ class VendorMiddleware
 
             if (Auth::check())
             {
-                $expiresAt = Carbon::now()->addMinute(1);
-                Cache::put('user-is-online'.Auth::user()->id,true,$expiresAt);
+                $expiresAt = Carbon::now()->addMinutes(1);
+                Cache::put('user-is-online'. Auth::user()->id,true, $expiresAt);
             }
 
             return $next($request);

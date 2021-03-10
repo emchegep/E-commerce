@@ -4,6 +4,7 @@
     Group
 @endsection
 @section('content')
+
     <div class="container-fluid mt-5">
         <!-- Heading -->
         <div class="card mb-4 wow fadeIn">
@@ -27,7 +28,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <table class="table table-striped">
+                        <table class="table table-striped table-bordered">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -48,9 +49,30 @@
                                 </td>
                                 <td>
                                     <a href="{{url('group-edit/'.$group->id)}}" class="badge btn-primary py-2 px-3">Edit</a>
-                                    <a href="{{url('group-delete/'.$group->id)}}" class="badge btn-danger py-2 px-3">Delete</a>
+                                    <a href="" class="badge btn-danger py-2 px-3"  data-toggle="modal" data-target="#groupEditModal">Delete</a>
                                 </td>
                             </tr>
+                            <!-- Modal -->
+                            <div class="modal" id="groupEditModal"  data-backdrop="static"  tabindex="-1" aria-labelledby="groupEditModal" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Group</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Are you sure you want to delete this Group?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            <a href="{{url('group-delete/'.$group->id)}}" type="submit" class="btn btn-primary">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End of Modal -->
                                 @endforeach
                             </tbody>
                         </table>

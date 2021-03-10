@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Subcategory extends Model
 {
    protected $fillable = [
+       'user_id',
        'category_id',
        'name',
+       'url',
        'description',
        'image',
        ''

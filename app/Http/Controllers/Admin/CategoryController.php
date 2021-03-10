@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Group;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 class CategoryController extends Controller
 {
@@ -22,14 +23,12 @@ class CategoryController extends Controller
     public function store(Request $request){
         $category = new Category();
 
+        $category->user_id = Auth::user()->id;
         $category->group_id = $request->input('group_id');
         $category->name = $request->input('name');
+        $category->url = $request->input('url');
         $category->description = $request->input('description');
         if ($request->hasFile('category_img')){
-//            $destination = 'uploads/category/images/'.$category->image;
-//            if(File::exists($destination)){
-//                File::delete($destination);
-//            }
             $image_file = $request->file('category_img');
             $extension = $image_file->getClientOriginalExtension(); //get image extension
             $image_filename = time().'.'.$extension;
@@ -65,8 +64,10 @@ class CategoryController extends Controller
     public function update(Request $request, $id){
         $category = Category::find($id);
 
+        $category->user_id = Auth::user()->id;
         $category->group_id = $request->input('group_id');
         $category->name = $request->input('name');
+        $category->url = $request->input('url');
         $category->description = $request->input('description');
         if ($request->hasFile('category_img')){
             $destination = 'uploads/category/images/'.$category->image;

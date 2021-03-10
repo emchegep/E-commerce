@@ -15,13 +15,17 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('group_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('group_id');
             $table->string('name');
+            $table->string('url');
             $table->mediumText('description');
             $table->string('image');
             $table->string('icon');
             $table->tinyInteger('status')->default('0');
             $table->timestamps();
+            $table->foreign('group_id')->references('id')->on('groups');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

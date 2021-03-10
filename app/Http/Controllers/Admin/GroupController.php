@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Group;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
 {
@@ -20,7 +21,9 @@ class GroupController extends Controller
 
     public function store(Request $request){
         $group = new Group();
+        $group->user_id = Auth::user()->id;
         $group->name = $request->input('name');
+        $group->url = $request->input('url');
         $group->descrip = $request->input('descrip');
         $group->name = $request->input('name');
         if ($request->input('status') == true)
@@ -44,6 +47,7 @@ class GroupController extends Controller
         $group = Group::find($id);
 
         $group->name = $request->input('name');
+        $group->url = $request->input('url');
         $group->descrip = $request->input('descrip');
         $group->status = $request->input('status') == true ? '1' : '0';
         $group->update();

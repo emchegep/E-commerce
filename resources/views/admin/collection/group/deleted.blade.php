@@ -15,6 +15,7 @@
                     <a href="#" target="_blank">Collection</a>
                     <span>/</span>
                     <span>Group Deleted Records</span>
+                    <a href="{{url('group')}}" class="btn btn-danger float-right">back</a>
                 </h6>
             </div>
 

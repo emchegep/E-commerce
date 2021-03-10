@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 class SubcategoryController extends Controller
 {
@@ -18,8 +19,10 @@ class SubcategoryController extends Controller
     public function store(Request $request){
         $subcategory = new Subcategory();
 
+        $subcategory->user_id = Auth::user()->id;
         $subcategory->category_id = $request->input('category_id');
         $subcategory->name = $request->input('name');
+        $subcategory->url = $request->input('url');
         $subcategory->description = $request->input('description');
         if ($request->hasFile('image')){
             $image_file = $request->file('image');
@@ -45,8 +48,10 @@ class SubcategoryController extends Controller
     public function update(Request $request, $id){
         $subcategory = Subcategory::find($id);
 
+        $subcategory->user_id = Auth::user()->id;
         $subcategory->category_id = $request->input('category_id');
         $subcategory->name = $request->input('name');
+        $subcategory->url = $request->input('url');
         $subcategory->description = $request->input('description');
         if ($request->hasFile('image')){
             $destination = 'uploads/subcategory/images/'.$subcategory->image;

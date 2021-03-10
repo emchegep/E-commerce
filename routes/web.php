@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+//frontend
+Route::get('collection/{group_url}','Frontend\CollectionController@groupview');
+
 Route::group(['middleware'=>['auth','isUser']], function (){
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/my-profile','Frontend\UserController@myprofile');
@@ -32,7 +36,7 @@ Route::group(['middleware'=>['auth','isAdmin']], function (){
     Route::get('role-edit/{id}','Admin\RegisteredController@edit');
     Route::put('role-update/{id}','Admin\RegisteredController@updaterole');
 
-    //Groups
+    //Groups\
     Route::get('/group','Admin\GroupController@index');
     Route::get('/group-add','Admin\GroupController@viewpage');
     Route::post('group-store','Admin\GroupController@store');
@@ -61,6 +65,15 @@ Route::group(['middleware'=>['auth','isAdmin']], function (){
     Route::get('subcategory-deleted','Admin\SubcategoryController@deletedsubcategories');
     Route::get('subcategory-restore/{id}','Admin\SubcategoryController@deletedrestore');
 
+    //Product
+    Route::get('products','Admin\ProductController@index');
+    Route::get('add-product','Admin\ProductController@create');
+    Route::post('store-products','Admin\ProductController@store');
+    Route::get('edit-product/{id}','Admin\ProductController@edit');
+    Route::put('update-products/{id}','Admin\ProductController@update');
+    Route::get('delete-product/{id}','Admin\ProductController@delete');
+    Route::get('deleted-products','Admin\ProductController@deletedproducts');
+    Route::get('restore-product/{id}','Admin\ProductController@restoreproducts');
 });
 
 Route::group(['middleware'=>['auth','isVendor']], function (){

@@ -66,7 +66,7 @@
                             </div>
                             <div class="form-group">
                                 <select name="roles" class="form-control">
-                                    <option value="">--Select Role--</option>
+                                    <option value="{{$user_roles->role_as}}">{{$user_roles->role_as}}</option>
                                     <option value="">Default</option>
                                     <option value="admin">Admin</option>
                                     <option value="vendor">Vendor</option>

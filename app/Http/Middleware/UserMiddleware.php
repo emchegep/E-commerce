@@ -18,24 +18,22 @@ class UserMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->isban)
-        {
-         $banned = Auth::user()->isban == "1";
-            Auth::logout();
-            if ($banned == true){
-                $message = "Your account has been Banned. Please contact Administrator";
+            if (Auth::check() && Auth::user()->isban) {
+                $banned = Auth::user()->isban == "1";
+                Auth::logout();
+                if ($banned == 1) {
+                    $message = "Your account has been Banned. Please contact Administrator";
+                }
+
+                return redirect()->route('login')
+                    ->with('status', $message)
+                    ->withErrors(['email' => 'Your account has been Banned. Please contact Administrator']);
+            }
+            if (Auth::check()) {
+                $expiresAt = Carbon::now()->addMinutes(1);
+                Cache::put('user-is-online' . Auth::user()->id, true, $expiresAt);
             }
 
-            return redirect()->route('login')
-                ->with('status',$message)
-                ->withErrors(['email'=>'Your account has been Banned. Please contact Administrator']);
+            return $next($request);
         }
-        if (Auth::check())
-        {
-            $expiresAt = Carbon::now()->addMinute(3);
-            Cache::put('user-is-online'.Auth::user()->id,true,$expiresAt);
-        }
-
-      return $next($request);
-    }
 }
