@@ -1,4 +1,4 @@
-<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-mdb-ride="carousel" style="margin-top: 60px;">
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-mdb-ride="carousel"">
     <ol class="carousel-indicators">
         <li
                 data-mdb-target="#carouselExampleIndicators"

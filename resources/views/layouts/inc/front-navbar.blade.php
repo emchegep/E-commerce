@@ -28,18 +28,22 @@
                             <!-- Right -->
                             <ul class="navbar-nav">
                                 <li class="nav-item active">
-                                    <a class="nav-link waves-effect" href="#">Home
+                                    <a class="nav-link waves-effect" href="#">
+                                        <i class="fa fa-home pr-1"></i>Home
                                         <span class="sr-only">(current)</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">Collections</a>
+                                    <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+                                        <i class="fas fa-compress-arrows-alt pr-1"></i>Collections</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">New Arrivals</a>
+                                    <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank">
+                                        <i class="fa fa-cart-plus pr-1"></i>New Arrivals</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">All Products</a>
+                                    <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">
+                                        <i class="fa fa-align-justify pr-1"></i>All Products</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link waves-effect">
@@ -60,6 +64,7 @@
                                 @else
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            <i class="fa fa-user pr-1"></i>
                                             {{ Auth::user()->name }} <span class="caret"></span>
                                         </a>
 

@@ -20,6 +20,8 @@ Auth::routes();
 
 //frontend
 Route::get('collection/{group_url}','Frontend\CollectionController@groupview');
+Route::get('collection/{group_url}/{category_url}','Frontend\CollectionController@categoryview');
+Route::get('collection/{group_url}/{category_url}/{product_url}','Frontend\CollectionController@subcategoryview');
 
 Route::group(['middleware'=>['auth','isUser']], function (){
     Route::get('/home', 'HomeController@index')->name('home');
